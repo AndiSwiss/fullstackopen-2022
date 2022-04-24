@@ -8,4 +8,9 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="15.0.0 Liberica FULL (incl. JavaFX) - via HomeBrew" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="SwUserDefinedSpecifications">
+    <option name="specTypeByUrl">
+      <map />
+    </option>
+  </component>
 </project>
