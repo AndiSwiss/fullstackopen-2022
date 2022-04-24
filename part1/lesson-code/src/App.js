@@ -1,3 +1,5 @@
+import Counter from "./Counter";
+
 const Hello = (props) => <p>Hello {props.name}!</p>
 
 const App = () => {
@@ -11,6 +13,7 @@ const App = () => {
       <Hello name="George"/>
       <p>Hello world, it is {now.toString()}</p>
       <p>{a} plus {b} is {a + b}</p>
+      <Counter />
     </>)
 }
 
