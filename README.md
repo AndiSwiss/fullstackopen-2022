@@ -1,6 +1,18 @@
 # fullstackopen-2022
 These are my exercises for the Open University Course "Full Stack Open" https://fullstackopen.com/en
 
+## IMPORTANT: Start this project
+Since I used shared `node_modules` / `package.json` / `package-lock.json` (see section below), you have to install the dependencies only once, like so:
+```bash
+cd react-libraries
+npm install
+```
+=> This will install all dependencies in `react-libraries/node_modules`, and then all the subprojects can use these dependencies together! Run a subproject either via Run-Config in IntelliJ, or simply:
+```bash
+cd REACT_SUBPROJECT_FOLDER
+npm start
+```
+
 
 ## Shared `node_modules` / `package.json` / `package-lock.json`
 To save disk-space, I deleted all the `node_modules`-folders (around 210MB) in all the subprojects and created a shared library in `react-libraries`. A symlink then points from each subproject to the `node_modules` inside the folder `react-libraries`. (According to https://medium.com/@sammychinedu2ky/making-multiple-projects-share-node-modules-directory-2779adfea2e4 and https://www.howtogeek.com/297721/how-to-create-and-use-symbolic-links-aka-symlinks-on-a-mac/).
@@ -34,7 +46,18 @@ If you need to recreate `node_modules` in `react-libraries`:
 And don't put the symlink `node_modules` to the `.gitignore`, except the `react-libraries/node_modules`
 
 
+## Debugging
+Just write `debugger` anywhere in the code (e.g. in a function-call where you suspect problems). The Chrome browser with the opened developer-tools will automatically stop when this breakpoint is reached.
 
+You can also wrap it in a condition, so it only stops, when a certain condition is met:
+```javascript
+if (count === 5) { debugger }
+```
+More about this feature: See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger
+
+Additionally, use these features built-in to Chrome: https://developer.chrome.com/docs/devtools/javascript/reference
+
+---
 ## Possible caveats
 
 ### Problem
