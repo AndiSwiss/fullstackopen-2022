@@ -153,7 +153,6 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -256,8 +255,6 @@ dist
 **/*.backup.*
 **/*.back.*
 
-node_modules
-
 *.sublime*
 
 psd
@@ -268,4 +265,4 @@ sketch
 
 # Custom entries
 # Because I used shared resources, ONLY exclude the main resources:
-#react-libraries/node_modules/
+react-libraries/node_modules/
