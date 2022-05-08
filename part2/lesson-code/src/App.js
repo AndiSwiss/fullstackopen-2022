@@ -1,7 +1,8 @@
 /**
  * Code from https://fullstackopen.com/en/part2/rendering_a_collection_modules
  */
-const Note = ({note}) => <li key={note.id}>{note.content}</li>
+
+import Note from "./components/Note";
 
 const App = ({notes}) => {
   return (<>
