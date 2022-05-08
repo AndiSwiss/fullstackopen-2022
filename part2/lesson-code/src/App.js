@@ -1,16 +1,15 @@
 /**
  * Code from https://fullstackopen.com/en/part2/rendering_a_collection_modules
- *
  */
-const App = (props) => {
-  const {notes} = props
+const Note = ({note}) => <li key={note.id}>{note.content}</li>
 
+const App = ({notes}) => {
   return (<>
     <h1>Notes</h1>
     <ul>
-      <li>{notes[0].content}</li>
-      <li>{notes[1].content}</li>
-      <li>{notes[2].content}</li>
+      {notes.map(note =>
+        <Note key={note.id} note={note}/>
+      )}
     </ul>
   </>)
 }
