@@ -1,4 +1,4 @@
 
-const Person = ({person}) => <div key={person.name}>{person.name}: {person.number}</div>
+const Person = ({person}) => <div>{person.name}: {person.number}</div>
 
 export default Person
