@@ -1,10 +1,12 @@
-const Header = ({title}) => <h1>{title}</h1>
+const Header = ({title}) => <h2>{title}</h2>
 
 const Part = ({part}) => <p>{part.name} {part.exercises}</p>
 
 const Content = ({parts}) => <>{parts.map((p, index) => <Part key={index} part={p}/>)}</>
 
-const Total = ({parts}) => <p>Number of exercises {parts.map(p => p.exercises).reduce((a, b) => a + b, 0)}</p>
+const calculateTotal = parts => parts.map(p => p.exercises).reduce((a, b) => a + b, 0)
+
+const Total = ({parts}) => <p><strong>total of {calculateTotal(parts)} exercises</strong></p>
 
 const Course = ({course}) => (<>
   <Header title={course.name}/>
@@ -13,26 +15,54 @@ const Course = ({course}) => (<>
 </>)
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
+  const courses = [
+    {
+      name: 'Half Stack application development',
+      id: 1,
+      parts: [
+        {
+          name: 'Fundamentals of React',
+          exercises: 10,
+          id: 1
+        },
+        {
+          name: 'Using props to pass data',
+          exercises: 7,
+          id: 2
+        },
+        {
+          name: 'State of a component',
+          exercises: 14,
+          id: 3
+        },
+        {
+          name: 'Redux',
+          exercises: 11,
+          id: 4
+        }
+      ]
+    },
+    {
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
+      ]
+    }
+  ]
 
   return (<>
-    <Course course={course}></Course>
+    <h1>Web development curriculum</h1>
+    {courses.map(course => <Course key={course.id} course={course}/>)}
   </>)
 }
 
