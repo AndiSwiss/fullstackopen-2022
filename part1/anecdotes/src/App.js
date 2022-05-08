@@ -2,8 +2,7 @@ import {useState} from "react";
 
 const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
 
-const MostVotesBlock = ({anecdote, votes}) => <>
-  <h2>Anecdote with most votes</h2>
+const Anecdote = ({anecdote, votes}) => <>
   <p>{anecdote}</p>
   <p>has {votes} votes</p>
 </>
@@ -46,12 +45,15 @@ const App = () => {
 
   return (<>
     <h2>Anecdote of the day</h2>
-    <p>{anecdotes[selected]}</p>
+    <Anecdote anecdote={anecdotes[selected]} votes={votes[selected]}/>
     <Button onClick={vote} text="vote"/>
     <Button onClick={() => setSelected(newRandom())} text="next anecdote"/>
     <p>All votes: {votes.join(' - ')}</p>
     {/* Conditional block */}
-    {maxVoteId !== undefined && <MostVotesBlock anecdote={anecdotes[maxVoteId]} votes={votes[maxVoteId]} />}
+    {maxVoteId !== undefined && <>
+      <h2>Anecdote with most votes</h2>
+      <Anecdote anecdote={anecdotes[maxVoteId]} votes={votes[maxVoteId]}/>
+    </>}
   </>)
 }
 
