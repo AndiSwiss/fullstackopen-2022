@@ -31,23 +31,16 @@ const App = () => {
   }
 
   const filteredPersons = filter
-    ? persons.filter(person => {
-      return person.name.toLowerCase().includes(filter.toLowerCase())
-        || person.number.toLowerCase().includes(filter.toLowerCase());
-    })
+    ? persons.filter(person =>
+        person.name.toLowerCase().includes(filter.toLowerCase())
+        || person.number.toLowerCase().includes(filter.toLowerCase()))
     : persons
 
-  const handleNameChange = (event) => {
-    setNewName(event.target.value)
-  }
+  const handleNameChange = (event) => setNewName(event.target.value)
 
-  const handleNumberChange = (event) => {
-    setNewNumber(event.target.value)
-  }
+  const handleNumberChange = (event) => setNewNumber(event.target.value)
 
-  const handleFilterChange = (event) => {
-    setFilter(event.target.value)
-  }
+  const handleFilterChange = (event) => setFilter(event.target.value)
 
   return (<>
     <h1>Phonebook</h1>
