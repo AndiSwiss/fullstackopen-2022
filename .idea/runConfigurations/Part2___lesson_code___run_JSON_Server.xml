@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Part2 - run JSON-Server" type="js.build_tools.npm">
+  <configuration default="false" name="Part2 - lesson-code - run JSON-Server" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/part2/lesson-code/package.json" />
     <command value="run" />
     <scripts>
