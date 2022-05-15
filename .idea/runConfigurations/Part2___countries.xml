@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Part2 - countries" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/part2/countries/package.json" />
+    <command value="start" />
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>
