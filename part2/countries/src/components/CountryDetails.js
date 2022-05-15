@@ -1,3 +1,4 @@
+import WeatherInCapitalCity from "./WeatherInCapitalCity";
 
 const CountryDetails = ({country}) => (<>
   <h2>{country.name.common}</h2>
@@ -14,8 +15,9 @@ const CountryDetails = ({country}) => (<>
     }
   </ul>
   <div>
-    {country.flags?.png && <img src={country.flags.png} alt={'Flag of ' + country.name.common} /> }
+    {country.flags?.png && <img src={country.flags.png} alt={'Flag of ' + country.name.common}/>}
   </div>
+  <WeatherInCapitalCity country={country}/>
 </>)
 
 export default CountryDetails
