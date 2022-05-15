@@ -16,11 +16,11 @@ const WeatherInCapitalCity = ({country}) => {
       })
       .catch(error => console.log('error with axios-call for weather! Error =', error, 'url =', url))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [country])
 
   const temp = () => ((weather.main?.temp ?? 0) - 273.15).toFixed(2)
-  const weatherIconCode = () => weather.weather && weather.weather[0].icon
-  const weatherUrl = () => `https://openweathermap.org/img/wn/${weatherIconCode()}@2x.png`
+  const subWeather = () => weather.weather && weather.weather[0]
+  const weatherUrl = () => `https://openweathermap.org/img/wn/${subWeather()?.icon}@2x.png`
 
   // Show help if apiKey is not set:
   if (!apiKey) {
@@ -39,6 +39,7 @@ const WeatherInCapitalCity = ({country}) => {
     <h3>Weather in {weather.name ?? 'n/a'}</h3>
     <div>Temperature: {temp()} Celcius</div>
     <img src={weatherUrl()} alt="Icon for clouds, rain or sun"/>
+    <div>Weather: {subWeather()?.main ?? 'n/a'}</div>
     <div>Wind: {weather.wind?.speed ?? 0} m/s</div>
   </div>)
 }
