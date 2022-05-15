@@ -1,6 +1,6 @@
 
 const Filter = ({filter, handleFilterChange}) => (
-  <div>filter shown with <input value={filter} onChange={handleFilterChange} placeholder="search..."/></div>
+  <div>Find countries <input value={filter} onChange={handleFilterChange} placeholder="search..."/></div>
 )
 
 

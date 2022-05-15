@@ -1,5 +1,5 @@
 
-const Country = ({country}) => (<>
+const CountryDetails = ({country}) => (<>
   <h2>{country.name.common}</h2>
   <div>Official name: {country.name.official ?? 'n/a'}</div>
   <div>Capital: {(country.capital && country.capital[0]) ?? 'n/a'}</div>
@@ -16,8 +16,6 @@ const Country = ({country}) => (<>
   <div>
     {country.flags?.png && <img src={country.flags.png} alt={'Flag of ' + country.name.common} /> }
   </div>
-
-
 </>)
 
-export default Country
+export default CountryDetails

@@ -9,12 +9,11 @@ const App = () => {
 
   let filteredCountries = filter
     ? countries.filter(country =>
-      country.name.common.toLowerCase().includes(filter.toLowerCase())
-      || country.name.official.toLowerCase().includes(filter.toLowerCase()))
+      country.name.common.toLowerCase().includes(filter.toLowerCase()))
     : countries
 
-  // Small hack, so that e.g. Sudan can also be shown
-  // Normally not shown, because there is 'Sudan' and 'South Sudan'
+  // Small enhancement, so that e.g. Sudan can also be shown.
+  // Normally not shown, because there is 'Sudan' and 'South Sudan'.
   const identicalCountry = filteredCountries.find(country => country.name.common.toLowerCase() === filter.toLowerCase())
   if (identicalCountry) filteredCountries = [identicalCountry]
 
