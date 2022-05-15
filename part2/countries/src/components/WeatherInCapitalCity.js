@@ -22,6 +22,19 @@ const WeatherInCapitalCity = ({country}) => {
   const weatherIconCode = () => weather.weather && weather.weather[0].icon
   const weatherUrl = () => `https://openweathermap.org/img/wn/${weatherIconCode()}@2x.png`
 
+  // Show help if apiKey is not set:
+  if (!apiKey) {
+    return (<div>
+      <h4>API-Key for https://openweathermap.org is missing! => Solution:</h4>
+      <ul>
+        <li>Get your API-Key at <a href="https://openweathermap.org">https://openweathermap.org</a></li>
+        <li>Create the file <em>.env.local</em> in the project directory</li>
+        <li>Write the API-Key in this file like: <em>REACT_APP_WEATHER_API_KEY=1234567890123456789</em></li>
+        <li>Restart this app</li>
+      </ul>
+    </div>)
+  }
+
   return (weather && <div>
     <h3>Weather in {weather.name ?? 'n/a'}</h3>
     <div>Temperature: {temp()} Celcius</div>
