@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import Filter from "./components/Filter";
+import Countries from "./components/Countries";
 
 const App = () => {
   const [countries, setCountries] = useState([])
@@ -26,17 +27,7 @@ const App = () => {
   return (<>
     <h1>Countries</h1>
     <Filter filter={filter} handleFilterChange={handleFilterChange}/>
-    {/*<Persons persons={filteredPersons}/>*/}
-    <ul>
-      {filteredCountries.length > 10
-        ? <div>Too many matches, specify filter</div>
-        : filteredCountries.map((country) => {
-          const name = country.name.common
-          const official = country.name.official ?? 'n/a'
-          return <div key={name}>{name} ({official})</div>
-        })
-      }
-    </ul>
+    <Countries countries={filteredCountries} />
   </>)
 }
 
