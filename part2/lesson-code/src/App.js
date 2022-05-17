@@ -10,6 +10,7 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
+  const url = 'http://localhost:3001/notes'
 
   const addNote = (event) => {
     event.preventDefault()
@@ -17,10 +18,16 @@ const App = () => {
       content: newNote,
       date: new Date().toISOString(),
       important: Math.random() < 0.5,
-      id: notes.length + 1, // only works, if notes are never deleted!
+      // id: notes.length + 1, // only works, if notes are never deleted!
     }
-    setNotes(notes.concat(noteObject))
-    setNewNote('')
+
+    axios
+      .post(url, noteObject)
+      .then(response => {
+        // use 'response.data, because this will have the auto-generated id from the server!!
+        setNotes(notes.concat(response.data))
+        setNewNote('')
+      })
   }
 
   const handleNoteChange = (event) => {
@@ -34,7 +41,7 @@ const App = () => {
   useEffect(() => {
     console.log('start useEffect')
     axios
-      .get('http://localhost:3001/notes')
+      .get(url)
       .then(response => {
         console.log('promise fulfilled')
         setNotes(response.data)
