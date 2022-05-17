@@ -42,10 +42,13 @@ const App = () => {
    * That means, that you can call deletePerson(person.id) => and then, () => {..} is returned
    */
   const deletePerson = (id) => () => {
-    personService
-      .remove(id)
-      .then(() => setPersons(persons.filter(person => person.id !== id)))
-    // Note: .filter returns a new object => is immutable
+    const person = persons.find(person => person.id === id)
+    if (window.confirm(`Delete ${person.name}?`)) {
+      personService
+        .remove(id)
+        .then(() => setPersons(persons.filter(person => person.id !== id)))
+      // Note: .filter returns a new object => is immutable
+    }
   }
 
   const filteredPersons = filter
