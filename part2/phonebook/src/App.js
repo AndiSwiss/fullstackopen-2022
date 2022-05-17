@@ -10,11 +10,25 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
 
+  const resetForm = () => {
+    setNewName('')
+    setNewNumber('')
+  }
+
   /**
    * Called by addPerson
    */
   const modifyPerson = () => {
-    alert(`${newName} is already added to the phonebook`)
+    if (window.confirm(`'${newName}' is already added to the phonebook, replace the old number with a new one?`)) {
+      const changedPerson = {...persons.find(p => p.name === newName), number: newNumber}
+      const id = changedPerson.id
+      personService
+        .update(id, changedPerson)
+        .then(returnedPerson => {
+          setPersons(persons.map(p => p.id === id ? returnedPerson : p))
+          resetForm()
+        })
+    }
   }
 
   const addPerson = (event) => {
@@ -31,8 +45,7 @@ const App = () => {
         .create(personObject)
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
-          setNewName('')
-          setNewNumber('')
+          resetForm()
         })
     }
   }
@@ -42,8 +55,8 @@ const App = () => {
    * That means, that you can call deletePerson(person.id) => and then, () => {..} is returned
    */
   const deletePerson = (id) => () => {
-    const person = persons.find(person => person.id === id)
-    if (window.confirm(`Delete ${person.name}?`)) {
+    const personToDelete = persons.find(person => person.id === id)
+    if (window.confirm(`Delete '${personToDelete.name}'?`)) {
       personService
         .remove(id)
         .then(() => setPersons(persons.filter(person => person.id !== id)))
