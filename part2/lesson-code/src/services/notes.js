@@ -15,8 +15,18 @@ const update = (id, newObject) => axios
   .then(response => response.data)
 
 
-export default {
+const notes = {
   getAll,
   create,
   update
 }
+
+// The above is a shorthand for the following (is the same):
+// const notes = {
+//   getAll: getAll,
+//   create: create,
+//   update: update
+// }
+
+
+export default notes
