@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
-import axios from "axios";
+import personService from "./services/personService";
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -20,9 +20,13 @@ const App = () => {
         name: newName,
         number: newNumber,
       }
-      setPersons(persons.concat(personObject))
-      setNewName('')
-      setNewNumber('')
+      personService
+        .create(personObject)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('')
+        })
     }
   }
 
@@ -39,11 +43,12 @@ const App = () => {
   const handleFilterChange = (event) => setFilter(event.target.value)
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => setPersons(response.data))
+    personService
+      .getAll()
+      .then(initialPersons => setPersons(initialPersons))
       .catch(error => console.log('error with axios-call! Error =', error))
   }, [])
+
 
   return (<>
     <h1>Phonebook</h1>

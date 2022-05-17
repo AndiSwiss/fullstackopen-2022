@@ -13,7 +13,7 @@ const getAll = () => {
   // => lets us test the catch-clause in toggleImportanceOf:
   const nonExisting = {
     id: 10000,
-    content: 'This note is not saved to server',
+    content: '!This note is not saved to server!',
     date: '2019-05-30T17:30:31.098Z',
     important: true
   }
