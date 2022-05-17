@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
@@ -10,11 +10,18 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
 
+  /**
+   * Called by addPerson
+   */
+  const modifyPerson = () => {
+    alert(`${newName} is already added to the phonebook`)
+  }
+
   const addPerson = (event) => {
     event.preventDefault()
     // check if name is not already in the phonebook
     if (persons.find(person => person.name === newName)) {
-      alert(`${newName} is already added to the phonebook`)
+      modifyPerson()
     } else {
       const personObject = {
         name: newName,
@@ -28,6 +35,17 @@ const App = () => {
           setNewNumber('')
         })
     }
+  }
+
+  /**
+   * Note the signature:  = (id) => () => {..}
+   * That means, that you can call deletePerson(person.id) => and then, () => {..} is returned
+   */
+  const deletePerson = (id) => () => {
+    personService
+      .remove(id)
+      .then(() => setPersons(persons.filter(person => person.id !== id)))
+    // Note: .filter returns a new object => is immutable
   }
 
   const filteredPersons = filter
@@ -62,7 +80,7 @@ const App = () => {
       handleNumberChange={handleNumberChange}
     />
     <h2>Numbers</h2>
-    <Persons persons={filteredPersons}/>
+    <Persons persons={filteredPersons} deletePersonHandler={deletePerson}/>
   </>)
 }
 
