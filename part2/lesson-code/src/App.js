@@ -18,7 +18,6 @@ const App = () => {
       content: newNote,
       date: new Date().toISOString(),
       important: Math.random() < 0.5,
-      // id: notes.length + 1, // only works, if notes are never deleted!
     }
 
     axios
@@ -38,16 +37,22 @@ const App = () => {
     ? notes
     : notes.filter(note => note.important)
 
+  const toggleImportanceOf = (id) => () => {
+    const note = notes.find(n => n.id === id)
+    const changedNote = { ...note, important: !note.important}
+
+    axios
+      .put(url + '/' + id, changedNote)
+      .then(response => setNotes(notes.map(note => note.id !== id ? note : response.data)))
+  }
+
   useEffect(() => {
-    console.log('start useEffect')
     axios
       .get(url)
       .then(response => {
-        console.log('promise fulfilled')
         setNotes(response.data)
       })
   }, [])
-  console.log('render', notes.length, 'notes')
 
   return (<>
     <h1>Notes</h1>
@@ -58,7 +63,7 @@ const App = () => {
     </div>
     <ul>
       {notesToShow.map(note =>
-        <Note key={note.id} note={note}/>
+        <Note key={note.id} note={note} toggleImportance={toggleImportanceOf(note.id)}/>
       )}
     </ul>
     <form onSubmit={addNote}>
