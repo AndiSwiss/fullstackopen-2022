@@ -75,6 +75,12 @@ const App = () => {
           // Note: .filter returns a new object => is immutable
           showMessage(`Removed '${personToDelete.name}'`)
         })
+        .catch(() => {
+          showMessage(
+            `Information of ${personToDelete.name} has already been removed from the server!`, true
+          )
+          setPersons(persons.filter(person => person.id !== id))
+        })
     }
   }
 
