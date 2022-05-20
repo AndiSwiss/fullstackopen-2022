@@ -3,16 +3,25 @@ import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 import personService from "./services/personService";
+import Notification from "./components/Notification";
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [message, setMessage] = useState(null)
+  const [isError, setIsError] = useState(false)
 
   const resetForm = () => {
     setNewName('')
     setNewNumber('')
+  }
+
+  const showMessage = (text, asError = false) => {
+    setMessage(text)
+    setIsError(asError)
+    setTimeout(() => setMessage(null), 3000)
   }
 
   /**
@@ -26,6 +35,7 @@ const App = () => {
         .update(id, changedPerson)
         .then(returnedPerson => {
           setPersons(persons.map(p => p.id === id ? returnedPerson : p))
+          showMessage(`Updated '${returnedPerson.name}'`)
           resetForm()
         })
     }
@@ -45,6 +55,7 @@ const App = () => {
         .create(personObject)
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
+          showMessage(`Added '${returnedPerson.name}'`)
           resetForm()
         })
     }
@@ -59,8 +70,11 @@ const App = () => {
     if (window.confirm(`Delete '${personToDelete.name}'?`)) {
       personService
         .remove(id)
-        .then(() => setPersons(persons.filter(person => person.id !== id)))
-      // Note: .filter returns a new object => is immutable
+        .then(() => {
+          setPersons(persons.filter(person => person.id !== id))
+          // Note: .filter returns a new object => is immutable
+          showMessage(`Removed '${personToDelete.name}'`)
+        })
     }
   }
 
@@ -86,6 +100,7 @@ const App = () => {
 
   return (<>
     <h1>Phonebook</h1>
+    <Notification message={message} isError={isError}/>
     <Filter filter={filter} handleFilterChange={handleFilterChange}/>
     <h2>Add new</h2>
     <PersonForm
