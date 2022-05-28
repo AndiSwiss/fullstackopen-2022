@@ -1,0 +1,17 @@
+### Testing my backend
+### ==================
+###
+### See full help at:
+### https://www.jetbrains.com/help/webstorm/http-client-in-product-code-editor.html
+
+### Note: You can directly paste a curl-command => gets automatically converted to an http-request
+### and via Context Action, you can create a curl-command from an http-request
+
+### GET all notes
+GET http://localhost:3001/api/notes
+
+### GET a single note
+GET http://localhost:3001/api/notes/2
+
+### DELETE a note
+DELETE http://localhost:3001/api/notes/2
