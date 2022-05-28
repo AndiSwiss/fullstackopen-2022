@@ -13,6 +13,8 @@ cd REACT_SUBPROJECT_FOLDER
 npm start
 ```
 
+Do the same in folder `react-libraries-backend`.
+
 
 ## Shared `node_modules` / `package.json` / `package-lock.json`
 To save disk-space, I deleted all the `node_modules`-folders (around 210MB) in all the subprojects and created a shared library in `react-libraries`. A symlink then points from each subproject to the `node_modules` inside the folder `react-libraries`. (According to https://medium.com/@sammychinedu2ky/making-multiple-projects-share-node-modules-directory-2779adfea2e4 and https://www.howtogeek.com/297721/how-to-create-and-use-symbolic-links-aka-symlinks-on-a-mac/).
