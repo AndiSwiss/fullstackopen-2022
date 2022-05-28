@@ -265,4 +265,4 @@ sketch
 
 # Custom entries
 # Because I used shared resources, ONLY exclude the main resources:
-react-libraries/node_modules/
+react-libraries*/node_modules/
