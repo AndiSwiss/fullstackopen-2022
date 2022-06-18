@@ -267,5 +267,8 @@ sketch
 # Because I used shared resources, ONLY exclude the main resources:
 react-libraries*/node_modules/
 
+part3/lesson-code-frontend/build/
+
 # Env files are normally excluded. Nevertheless, add the following
 !part3/lesson-code-frontend/.env
+
