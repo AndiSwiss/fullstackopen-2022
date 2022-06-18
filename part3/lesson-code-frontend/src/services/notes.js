@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:3001/api/notes'
+// const baseUrl = 'http://localhost:3001/api/notes'
+
+// From Heroku-App:
+const baseUrl = 'https://fullstackopen-part3b-lesson.herokuapp.com/api/notes'
 
 // const getAll = () => axios
 //   .get(baseUrl)
