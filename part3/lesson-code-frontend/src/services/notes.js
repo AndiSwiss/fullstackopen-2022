@@ -5,6 +5,11 @@ import axios from "axios";
 // From Heroku-App:
 const baseUrl = 'https://fullstackopen-part3b-lesson.herokuapp.com/api/notes'
 
+// Relative URL (only, when Front- and Backend are on Heroku):
+// TODO: Only set this active before `npm run build` and copying code to the repo 'fullstackopen-2022-backend'
+// const baseUrl = '/api/notes'
+
+
 // const getAll = () => axios
 //   .get(baseUrl)
 //   .then(response => response.data)
