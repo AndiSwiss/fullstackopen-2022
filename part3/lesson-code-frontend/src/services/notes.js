@@ -11,8 +11,10 @@ import axios from "axios";
         Invalid options object. Dev Server has been initialized using an options object that does not match the API schema.
    POSSIBLE SOLUTION: https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object
      => But I found a simpler way: with a local env-variable:
-        (NOTE: MUST begin with 'REACT_APP_' - and you have to restart the server if you change anything
-        (if the env is not set, then use the relative URL => works nicely:
+        (NOTE 1: MUST begin with 'REACT_APP_' - and you have to restart the server if you change anything)
+        (NOTE 2: Don't use .env => if committed to the heroku repo, it tries to look for it as well when on heroku!
+                 => instead use .env.development.local  (then its only active for local development))
+        (NOTE 3: If the env is not set, then use the relative URL => works nicely)
 */
 const baseUrl = process.env.REACT_APP_LOCAL_BACKEND || '/api/notes'
 
