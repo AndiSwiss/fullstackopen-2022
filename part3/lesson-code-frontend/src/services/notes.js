@@ -1,18 +1,20 @@
 import axios from "axios";
 
-// const baseUrl = 'http://localhost:3001/api/notes'
+/*
+ Relative URL '/api/notes'
+ - Works when both front- and backend are on Heroku
 
-// From Heroku-App:
-const baseUrl = 'https://fullstackopen-part3b-lesson.herokuapp.com/api/notes'
-
-// Relative URL (only, when Front- and Backend are on Heroku):
-// TODO: Only set this active before `npm run build` and copying code to the repo 'fullstackopen-2022-backend'
-// const baseUrl = '/api/notes'
-
-
-// const getAll = () => axios
-//   .get(baseUrl)
-//   .then(response => response.data)
+ For local execution:
+ - I tried to add the line "proxy": "http://localhost:3001"
+   as explained on https://fullstackopen.com/en/part3/deploying_app_to_internet
+   BUT: That gave an error in the console and the app was not working anymore:
+        Invalid options object. Dev Server has been initialized using an options object that does not match the API schema.
+   POSSIBLE SOLUTION: https://stackoverflow.com/questions/70374005/invalid-options-object-dev-server-has-been-initialized-using-an-options-object
+     => But I found a simpler way: with a local env-variable:
+        (NOTE: MUST begin with 'REACT_APP_' - and you have to restart the server if you change anything
+        (if the env is not set, then use the relative URL => works nicely:
+*/
+const baseUrl = process.env.REACT_APP_LOCAL_BACKEND || '/api/notes'
 
 
 const getAll = () => {
