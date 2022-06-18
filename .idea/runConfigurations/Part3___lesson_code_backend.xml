@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Part3 - lesson-code (Backend)" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/part3/lesson-code/package.json" />
+  <configuration default="false" name="Part3 - lesson-code-backend" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/part3/lesson-code-backend/package.json" />
     <command value="run" />
     <scripts>
       <script value="dev" />
