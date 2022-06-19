@@ -16,7 +16,6 @@ import axios from "axios";
                  => instead use .env.development.local  (then its only active for local development))
         (NOTE 3: If the env is not set, then use the relative URL => works nicely)
 */
-// const baseUrl = 'http://localhost:3001/api/persons'
 const baseUrl = process.env.REACT_APP_LOCAL_BACKEND || '/api/persons'
 
 const getAll = () => axios
