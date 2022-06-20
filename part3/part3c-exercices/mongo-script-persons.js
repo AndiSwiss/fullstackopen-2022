@@ -41,20 +41,20 @@ const Person = mongoose.model('Person', personSchema)
 mongoose
   .connect(url)
   .then(res => {
-    console.log('connected')
-    if (name) {
-      const person = new Person({name, number})
-      return person
+    const host = res.connections[0]?.host
+    const port = res.connections[0]?.port
+    console.log(`connected to ${host} on port ${port}`)
+    // Create new entry (if name exists) or fetch all Persons:
+    return name
+      ? new Person({name, number})
         .save()
         .then(result => console.log(`added ${result.name} ${result.number} to phonebook`))
-    } else {
-      return Person
+      : Person
         .find({})
         .then(result => {
           console.log('phonebook:')
           result.forEach(person => console.log(`${person.name} ${person.number}`))
         })
-    }
   })
   .then(() => {
     return mongoose.connection.close()
