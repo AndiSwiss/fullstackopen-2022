@@ -271,7 +271,6 @@ part3/lesson-code-frontend/build/
 part3/phonebook/build
 
 # Env files are normally excluded. Nevertheless, add the following
-!part3/lesson-code-frontend/.env
 !part3/lesson-code-frontend/.env.development.local
 !part3/phonebook/.env.development.local
 
