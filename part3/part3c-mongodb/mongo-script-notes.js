@@ -3,8 +3,8 @@
  * From https://fullstackopen.com/en/part3/saving_data_to_mongo_db
  * But heavily changed, and extended with command-line interaction (with choices!)
  *
- * Run with `node mongo-script.js <password>`
- * Or just with `node mongo-script.js`
+ * Run with `node mongo-script-notes.js <password>`
+ * Or just with `node mongo-script-notes.js`
  */
 
 const mongoose = require('mongoose')
