@@ -6,7 +6,7 @@
  *
  * You can do two different things:
  * (a) Query the phonebook-entries (3 arguments):  node mongo-script-persons.js <password>
- * (b) Add a new phonebook-entry (5 arguments):    node mongo-script-persons.js <password> <name> <number
+ * (b) Add a new phonebook-entry (5 arguments):    node mongo-script-persons.js <password> <name> <number>
  * E.g.: node mongo-script-persons.js yourpassword Anna 040-1234556
  */
 
@@ -23,7 +23,7 @@ if (argSize === 3 || argSize === 5) {
 } else {
   console.log('ERROR: Wrong input format! You can do two different things:')
   console.log('  (a) Query the phonebook-entries (3 arguments):  node mongo-script-persons.js <password>')
-  console.log('  (b) Add a new phonebook-entry (5 arguments):    node mongo-script-persons.js <password> <name> <number')
+  console.log('  (b) Add a new phonebook-entry (5 arguments):    node mongo-script-persons.js <password> <name> <number>')
   console.log('E.g.: node mongo-script-persons.js yourpassword Anna 040-1234556')
   process.exit(1)
 }
