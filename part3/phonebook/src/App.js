@@ -39,7 +39,7 @@ const App = () => {
           resetForm()
         })
         .catch(error => {
-          showMessage(error.response.date.error, true)
+          showMessage(error.response.data.errorMessage, true)
         })
     }
   }
@@ -65,7 +65,7 @@ const App = () => {
           resetForm()
         })
         .catch(error => {
-          showMessage(error.response.date.error, true)
+          showMessage(error.response.data.errorMessage, true)
         })
     }
   }
