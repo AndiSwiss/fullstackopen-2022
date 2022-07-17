@@ -38,9 +38,15 @@ const App = () => {
           showMessage(`Updated '${returnedPerson.name}'`)
           resetForm()
         })
+        .catch(error => {
+          showMessage(error.response.date.error, true)
+        })
     }
   }
 
+  /**
+   * Add a person
+   */
   const addPerson = (event) => {
     event.preventDefault()
     // check if name is not already in the phonebook
@@ -57,6 +63,9 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           showMessage(`Added '${returnedPerson.name}'`)
           resetForm()
+        })
+        .catch(error => {
+          showMessage(error.response.date.error, true)
         })
     }
   }
