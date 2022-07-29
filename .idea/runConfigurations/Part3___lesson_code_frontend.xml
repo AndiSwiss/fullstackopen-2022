@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Part3 - lesson-code-frontend" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/part3/lesson-code-frontend/package.json" />
+    <command value="start" />
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

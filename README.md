@@ -1,7 +1,12 @@
 # fullstackopen-2022
 These are my exercises for the Open University Course "Full Stack Open" https://fullstackopen.com/en
 
-## IMPORTANT: Start this project
+## "Sister" Repositories
+Some exercises are solved in the sister repositories (see their respective README.md-files):
+- https://github.com/AndiSwiss/fullstackopen-2022-backend-lesson-code
+- https://github.com/AndiSwiss/fullstackopen-2022-backend
+
+## IMPORTANT: Start this Project
 Since I used shared `node_modules` / `package.json` / `package-lock.json` (see section below), you have to install the dependencies only once, like so:
 ```bash
 cd react-libraries
@@ -13,6 +18,8 @@ cd REACT_SUBPROJECT_FOLDER
 npm start
 ```
 
+Do the same in folder `react-libraries-backend`.
+
 
 ## Shared `node_modules` / `package.json` / `package-lock.json`
 To save disk-space, I deleted all the `node_modules`-folders (around 210MB) in all the subprojects and created a shared library in `react-libraries`. A symlink then points from each subproject to the `node_modules` inside the folder `react-libraries`. (According to https://medium.com/@sammychinedu2ky/making-multiple-projects-share-node-modules-directory-2779adfea2e4 and https://www.howtogeek.com/297721/how-to-create-and-use-symbolic-links-aka-symlinks-on-a-mac/).
@@ -21,7 +28,7 @@ AND: I also created symlinks for `package.json` and `package-lock.json` => since
 
 **Result**: When having around 10 subprojects, you can save around 2GB of disk-space with this method!!
 
-### Setting up a new subproject - using the shared resources
+### Setting up a new Subproject - Using the Shared Resources
 Copy all required code from `react-starter-project`. Also copy the symlinked `node_modules`and `package.json` and `package-lock.json`.
 
 => Use the following code to create the symlinks, if you need to recreate them:
@@ -58,7 +65,7 @@ More about this feature: See https://developer.mozilla.org/en-US/docs/Web/JavaSc
 Additionally, use these features built-in to Chrome: https://developer.chrome.com/docs/devtools/javascript/reference
 
 ---
-## Possible caveats
+## Possible Caveats
 
 ### Problem
 In the beginning, the idea with the shared React libraries in `react-libraries` and the symlinks worked just great. But from one point on, the sub-app 'lesson-code' throws a lot of errors, and it crashes badly. One of the many errors are (see below). Only the sub-project **lesson-code** was crashing. It seemed to have problem with `useState` => when I removed it, it was ok. It threw many errors, one of it:
