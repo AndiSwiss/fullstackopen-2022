@@ -1,0 +1,14 @@
+### GET request with a header
+GET http://localhost:3003/api/blogs
+Accept: application/json
+
+### Send POST request with json body
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "test 1",
+  "author": "me",
+  "url": "n/a",
+  "likes": 4
+}
