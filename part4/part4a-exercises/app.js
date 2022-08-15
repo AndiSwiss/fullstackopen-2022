@@ -5,15 +5,13 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const { info } = require('./utils/logger')
 const blogRouter = require('./controllers/blogs')
-
+const { MONGODB_URL, MONGODB_URL_NO_PW } = require('./utils/config')
 
 // from https://cloud.mongodb.com => Button 'Connect' => 'Connect your application'
-const MONGODB_URL = process.env.MONGODB_URL
-if (!MONGODB_URL) throw 'MONGODB_URL is missing in .env!'
 mongoose.connect(MONGODB_URL)
-  .then(() => info(`connected to MongoDB: ${MONGODB_URL}`))
+  .then(() => info(`connected to MongoDB: ${MONGODB_URL_NO_PW}`))
   .catch(error => {
-    info(`error connecting to MongoDB: ${MONGODB_URL}`)
+    info(`error connecting to MongoDB: ${MONGODB_URL_NO_PW}`)
     info(`error-message: ${error}`)
   })
 
