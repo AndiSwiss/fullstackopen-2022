@@ -4,15 +4,8 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const { info } = require('./utils/logger')
+const Blog = require('./models/blog')
 
-const blogSchema = new mongoose.Schema({
-  title: String,
-  author: String,
-  url: String,
-  likes: Number
-})
-
-const Blog = mongoose.model('Blog', blogSchema)
 
 // from https://cloud.mongodb.com => Button 'Connect' => 'Connect your application'
 const MONGODB_URL = process.env.MONGODB_URL
