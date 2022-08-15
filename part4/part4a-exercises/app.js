@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
+const { info } = require('./utils/logger')
 
 const blogSchema = new mongoose.Schema({
   title: String,
@@ -17,10 +18,10 @@ const Blog = mongoose.model('Blog', blogSchema)
 const MONGODB_URL = process.env.MONGODB_URL
 if (!MONGODB_URL) throw 'MONGODB_URL is missing in .env!'
 mongoose.connect(MONGODB_URL)
-  .then(() => console.log(`connected to MongoDB: ${MONGODB_URL}`))
+  .then(() => info(`connected to MongoDB: ${MONGODB_URL}`))
   .catch(error => {
-    console.log(`error connecting to MongoDB: ${MONGODB_URL}`)
-    console.log(`error-message: ${error}`)
+    info(`error connecting to MongoDB: ${MONGODB_URL}`)
+    info(`error-message: ${error}`)
   })
 
 app.use(cors())
