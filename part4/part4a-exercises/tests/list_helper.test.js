@@ -1,4 +1,4 @@
-const { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes } = require('../utils/list_helper')
+const { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes, mostLikes_OLD } = require('../utils/list_helper')
 const { listWithOneBlog, blogs1, blogs1Favorite, blogs1LeastLiked } = require('./mockedBlogs')
 
 describe('dummy', () => {
@@ -74,13 +74,13 @@ describe('most blogs by author', () => {
   })
 })
 
-describe('most liked author', () => {
+const runMostLikedAuthorTests = (fnc) => {
   test('of no list is "undefined"', () => {
-    expect(mostLikes()).toBeUndefined()
+    expect(fnc()).toBeUndefined()
   })
 
   test('of empty list is "undefined"', () => {
-    expect(mostLikes([])).toBeUndefined()
+    expect(fnc([])).toBeUndefined()
   })
 
   test('when list has only one blog', () => {
@@ -88,7 +88,7 @@ describe('most liked author', () => {
       author: 'Edsger W. Dijkstra',
       likes: 5
     }
-    const result = mostLikes(listWithOneBlog)
+    const result = fnc(listWithOneBlog)
     expect(result).toEqual(expected)
   })
 
@@ -97,14 +97,17 @@ describe('most liked author', () => {
       author: 'Edsger W. Dijkstra',
       likes: 17
     }
-    const result = mostLikes(blogs1)
+    const result = fnc(blogs1)
     expect(result).toEqual(expected)
   })
 
-  // Useful while developing the function 'mostLikes'
+  // Useful while developing the function 'fnc'
   test('just console output', () => {
-    const result = mostLikes(blogs1)
+    const result = fnc(blogs1)
     console.log(`result =`, result)
   })
-})
+}
+
+describe('most liked author - VERSION 1', () => runMostLikedAuthorTests(mostLikes_OLD))
+describe('most liked author - VERSION 2', () => runMostLikedAuthorTests(mostLikes))
 

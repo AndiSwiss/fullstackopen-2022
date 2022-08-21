@@ -1,5 +1,6 @@
 const _ = require('lodash')
 
+// noinspection JSUnusedLocalSymbols
 const dummy = (blogs) => {
   return 1
 }
@@ -61,5 +62,6 @@ module.exports = {
   totalLikes,
   favoriteBlog,
   mostBlogs,
+  mostLikes_OLD,
   mostLikes
 }
