@@ -27,9 +27,9 @@ const mostBlogs = (blogs) => {
 }
 
 /**
- * Version 1 of mostLiked (works)
+ * Version 1 of mostLiked (works) - no LoDash-library
  */
-const mostLikes_OLD = (blogs) => {
+const mostLikes_v1 = (blogs) => {
   if (!blogs || !blogs.length) return undefined // checks if blogs is not defined OR blogs.length is falsy (0, undefined, ...)
   const authors = blogs.reduce((sum, item) => {
     sum[item.author] = (sum[item.author] ?? 0) + item.likes
@@ -42,26 +42,37 @@ const mostLikes_OLD = (blogs) => {
   }
 }
 
-
 /**
- * Version 2 of mostLiked (works)
+ * Version 2 of mostLiked (works) - with LoDash-library towards the end
  */
-const mostLikes = (blogs) => {
+const mostLikes_v2 = (blogs) => {
   if (!blogs || !blogs.length) return undefined // checks if blogs is not defined OR blogs.length is falsy (0, undefined, ...)
   const authors = blogs.reduce((sum, item) => {
     sum[item.author] = (sum[item.author] ?? 0) + item.likes
     return sum
   }, {})
-  const asEntries = Object.entries(authors).map(o => { return {author: o[0], likes: o[1]} })
+  const asEntries = Object.entries(authors).map(o => ({ author: o[0], likes: o[1] }))
   return _.maxBy(asEntries, 'likes')
 }
 
+/**
+ * Version 3 of mostLiked (works) - with only 1 statement!
+ */
+const mostLikes_v3 = (blogs) => {
+  return !blogs || !blogs.length
+    ? undefined // checks if blogs is not defined OR blogs.length is falsy (0, undefined, ...)
+    : _.maxBy(Object
+        .entries(blogs.reduce((sum, item) => ({ ...sum, [item.author]: (sum[item.author] ?? 0) + item.likes }), {}))
+        .map(o => ({ author: o[0], likes: o[1] })),
+      'likes')
+}
 
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
   mostBlogs,
-  mostLikes_OLD,
-  mostLikes
+  mostLikes_v1,
+  mostLikes_v2,
+  mostLikes_v3
 }

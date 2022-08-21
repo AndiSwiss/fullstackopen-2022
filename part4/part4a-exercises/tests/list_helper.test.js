@@ -1,4 +1,12 @@
-const { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes, mostLikes_OLD } = require('../utils/list_helper')
+const {
+  dummy,
+  totalLikes,
+  favoriteBlog,
+  mostBlogs,
+  mostLikes_v1,
+  mostLikes_v2,
+  mostLikes_v3
+} = require('../utils/list_helper')
 const { listWithOneBlog, blogs1, blogs1Favorite, blogs1LeastLiked } = require('./mockedBlogs')
 
 describe('dummy', () => {
@@ -108,6 +116,7 @@ const runMostLikedAuthorTests = (fnc) => {
   })
 }
 
-describe('most liked author - VERSION 1', () => runMostLikedAuthorTests(mostLikes_OLD))
-describe('most liked author - VERSION 2', () => runMostLikedAuthorTests(mostLikes))
+describe('most liked author - VERSION 1', () => runMostLikedAuthorTests(mostLikes_v1))
+describe('most liked author - VERSION 2', () => runMostLikedAuthorTests(mostLikes_v2))
+describe('most liked author - VERSION 3', () => runMostLikedAuthorTests(mostLikes_v3))
 
