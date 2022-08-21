@@ -8,6 +8,10 @@ describe('dummy', () => {
 })
 
 describe('total likes', () => {
+  test('of no list is "undefined"', () => {
+    expect(listHelper.totalLikes()).toBeUndefined()
+  })
+
   test('of empty list is zero', () => {
     expect(listHelper.totalLikes([])).toBe(0)
   })
@@ -22,6 +26,10 @@ describe('total likes', () => {
 })
 
 describe('favorite blog', () => {
+  test('of no list is "undefined"', () => {
+    expect(listHelper.favoriteBlog()).toBeUndefined()
+  })
+
   test('of empty list is "undefined"', () => {
     expect(listHelper.favoriteBlog([])).toBeUndefined()
   })
