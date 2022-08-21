@@ -25,9 +25,13 @@ const mostBlogs = (blogs) => {
   }
 }
 
+const mostLikes = (blogs) => undefined // TODO: implement
+
+
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
-  mostBlogs
+  mostBlogs,
+  mostLikes
 }

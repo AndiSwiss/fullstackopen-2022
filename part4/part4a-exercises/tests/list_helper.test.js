@@ -47,6 +47,10 @@ describe('favorite blog', () => {
 })
 
 describe('most blogs by author', () => {
+  test('of no list is "undefined"', () => {
+    expect(listHelper.mostBlogs()).toBeUndefined()
+  })
+
   test('of empty list is "undefined"', () => {
     expect(listHelper.mostBlogs([])).toBeUndefined()
   })
@@ -66,6 +70,34 @@ describe('most blogs by author', () => {
       blogs: 3
     }
     const result = listHelper.mostBlogs(blogs1)
+    expect(result).toEqual(expected)
+  })
+})
+
+describe('most liked author', () => {
+  test('of no list is "undefined"', () => {
+    expect(listHelper.mostLikes()).toBeUndefined()
+  })
+
+  test('of empty list is "undefined"', () => {
+    expect(listHelper.mostLikes([])).toBeUndefined()
+  })
+
+  test('when list has only one blog', () => {
+    const expected = {
+      author: 'Edsger W. Dijkstra',
+      likes: 5
+    }
+    const result = listHelper.mostLikes(listWithOneBlog)
+    expect(result).toEqual(expected)
+  })
+
+  test('of larger list of blogs', () => {
+    const expected = {
+      author: 'Edsger W. Dijkstra',
+      likes: 17
+    }
+    const result = listHelper.mostLikes(blogs1)
     expect(result).toEqual(expected)
   })
 })
