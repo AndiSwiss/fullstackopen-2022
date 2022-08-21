@@ -25,7 +25,18 @@ const mostBlogs = (blogs) => {
   }
 }
 
-const mostLikes = (blogs) => undefined // TODO: implement
+const mostLikes = (blogs) => {
+  if (!blogs || !blogs.length) return undefined // checks if blogs is not defined OR blogs.length is falsy (0, undefined, ...)
+  const authors = blogs.reduce((sum, item) => {
+    sum[item.author] = (sum[item.author] ?? 0) + item.likes
+    return sum
+  }, {})
+  const author = Object.keys(authors).reduce((a, b) => authors[a] > authors[b] ? a : b)
+  return {
+    author,
+    likes: authors[author]
+  }
+}
 
 
 module.exports = {
