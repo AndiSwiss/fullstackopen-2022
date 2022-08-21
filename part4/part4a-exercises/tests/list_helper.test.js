@@ -48,14 +48,17 @@ describe('most blogs by author', () => {
       author: 'Edsger W. Dijkstra',
       blogs: 1
     }
-    expect(listHelper.mostBlogs(listWithOneBlog)).toEqual(expected)
+    const result = listHelper.mostBlogs(listWithOneBlog)
+    expect(result).toEqual(expected)
   })
 
   test('of larger list of blogs', () => {
     const expected = {
       author: 'Robert C. Martin',
-      blogs: 1
+      blogs: 3
     }
-    expect(listHelper.mostBlogs(blogs1)).toEqual(expected)
+    const result = listHelper.mostBlogs(blogs1)
+    expect(result).toEqual(expected)
   })
 })
+

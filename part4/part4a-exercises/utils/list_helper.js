@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const dummy = (blogs) => {
   return 1
 }
@@ -13,8 +14,15 @@ const favoriteBlog = (blogs) => blogs.reduce(
   undefined
 )
 
-const mostBlogs = (blogs) => undefined // TODO: implement (tdd)
-
+const mostBlogs = (blogs) => {
+  if (!blogs || !blogs.length) return undefined // checks if blogs is not defined OR blogs.length is falsy (0, undefined, ...)
+  const authors = _.countBy(blogs, o => o.author)
+  const author = Object.keys(authors).reduce((a, b) => authors[a] > authors[b] ? a : b)
+  return {
+    author,
+    blogs: authors[author]
+  }
+}
 
 module.exports = {
   dummy,
