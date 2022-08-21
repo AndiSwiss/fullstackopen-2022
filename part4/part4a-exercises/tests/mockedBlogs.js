@@ -78,7 +78,6 @@ const blogs1LeastLiked = {
   __v: 0
 }
 
-
 module.exports = {
   listWithOneBlog,
   blogs1,
