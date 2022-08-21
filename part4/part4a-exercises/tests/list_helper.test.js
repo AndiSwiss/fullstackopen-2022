@@ -101,6 +101,7 @@ describe('most liked author', () => {
     expect(result).toEqual(expected)
   })
 
+  // Useful while developing the function 'mostLikes'
   test('just console output', () => {
     const result = mostLikes(blogs1)
     console.log(`result =`, result)

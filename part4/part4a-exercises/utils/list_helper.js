@@ -25,7 +25,10 @@ const mostBlogs = (blogs) => {
   }
 }
 
-const mostLikes = (blogs) => {
+/**
+ * Version 1 of mostLiked (works)
+ */
+const mostLikes_OLD = (blogs) => {
   if (!blogs || !blogs.length) return undefined // checks if blogs is not defined OR blogs.length is falsy (0, undefined, ...)
   const authors = blogs.reduce((sum, item) => {
     sum[item.author] = (sum[item.author] ?? 0) + item.likes
@@ -36,6 +39,20 @@ const mostLikes = (blogs) => {
     author,
     likes: authors[author]
   }
+}
+
+
+/**
+ * Version 2 of mostLiked (works)
+ */
+const mostLikes = (blogs) => {
+  if (!blogs || !blogs.length) return undefined // checks if blogs is not defined OR blogs.length is falsy (0, undefined, ...)
+  const authors = blogs.reduce((sum, item) => {
+    sum[item.author] = (sum[item.author] ?? 0) + item.likes
+    return sum
+  }, {})
+  const asEntries = Object.entries(authors).map(o => { return {author: o[0], likes: o[1]} })
+  return _.maxBy(asEntries, 'likes')
 }
 
 
