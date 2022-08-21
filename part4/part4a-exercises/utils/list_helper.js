@@ -13,8 +13,12 @@ const favoriteBlog = (blogs) => blogs.reduce(
   undefined
 )
 
+const mostBlogs = (blogs) => undefined // TODO: implement (tdd)
+
+
 module.exports = {
   dummy,
   totalLikes,
-  favoriteBlog
+  favoriteBlog,
+  mostBlogs
 }
