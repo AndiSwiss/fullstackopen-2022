@@ -66,14 +66,21 @@ describe('fetch individual blog', () => {
       .expect('Content-Type', /application\/json/)
     expect(resultBlog.body.id).toBeDefined()
   })
+
+  test('fetching non-existing blog should result in 404', async () => {
+    const nonExistingId = await helper.nonExistingId()
+    await api
+      .get(`/api/blogs/${nonExistingId}`)
+      .expect(404)
+  })
 })
 
 describe('new blog', () => {
-  test('a valid blog can be added', async () => {
+  test('EXERCISE 4.10: a valid blog can be added', async () => {
     const newBlog = {
-      title: "async/await simplifies making async calls",
-      author: "who",
-      url: "",
+      title: 'async/await simplifies making async calls',
+      author: 'who',
+      url: '',
       likes: 5
     }
     await api
@@ -89,8 +96,8 @@ describe('new blog', () => {
 
   test('blog without title is not added', async () => {
     const newBlog = {
-      author: "who",
-      url: "",
+      author: 'who',
+      url: '',
       likes: 5
     }
     await api

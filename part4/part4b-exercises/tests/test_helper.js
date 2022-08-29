@@ -21,7 +21,12 @@ const initialBlogs = [
   }
 ]
 
-const aBlog = new Blog({ content: 'willremovethissoon', date: new Date() })
+const aBlog = new Blog({
+  title: 'will be deleted anyhow',
+  author: 'anybody',
+  url: 'nothing.com',
+  likes: 1
+})
 
 const nonExistingId = async () => {
   await aBlog.save()
