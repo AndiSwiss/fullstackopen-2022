@@ -2,23 +2,23 @@ const Blog = require('../models/blog')
 
 const initialBlogs = [
   {
-    title: "something",
-    author: "me",
-    url: "google.com",
-    likes: 4,
+    title: 'something',
+    author: 'me',
+    url: 'google.com',
+    likes: 4
   },
   {
-    title: "smart stuff",
-    author: "hugo",
-    url: "",
-    likes: 5,
+    title: 'smart stuff',
+    author: 'hugo',
+    url: '',
+    likes: 5
   },
   {
-    title: "another one",
-    author: "me",
-    url: "yahoo.com",
-    likes: 3,
-  },
+    title: 'another one',
+    author: 'me',
+    url: 'yahoo.com',
+    likes: 3
+  }
 ]
 
 const aBlog = new Blog({ content: 'willremovethissoon', date: new Date() })

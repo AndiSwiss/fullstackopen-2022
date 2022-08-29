@@ -19,12 +19,28 @@ beforeEach(async () => {
   // await Promise.all(promiseArray)
 })
 
-test('blogs are returned as json', async () => {
-  await api
-    .get('/api/blogs')
-    .expect(200)
-    .expect('Content-Type', /application\/json/)
+describe('get blogs', () => {
+  test('blogs are returned as json', async () => {
+    await api
+      .get('/api/blogs')
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+  }, 100000)
+
+  test('all initial blogs are returned', async () => {
+    // IntelliJ thinks that the 'await' in the following line is not necessary, but it certainly is!!
+    // noinspection ES6RedundantAwait
+    const response = await api.get('/api/blogs')
+    expect(response.body).toHaveLength(helper.initialBlogs.length)
+  })
+
+  test('a specific blog is within the returned blogs', async () => {
+    const response = await api.get('/api/blogs')
+    const titles = response.body.map(r => r.title)
+    expect(titles).toContain('smart stuff')
+  })
 })
+
 
 afterAll(() => {
   mongoose.connection.close()
