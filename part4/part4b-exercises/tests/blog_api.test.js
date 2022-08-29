@@ -108,6 +108,26 @@ describe('new blog', () => {
 
     expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
   })
+
+
+  test('EXERCISE 4.11: If "likes" is missing, check if it defaults to 0', async () => {
+    const newBlog = {
+      title: 'not a very liked blog',
+      author: 'ben',
+      url: '',
+    }
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+    const blogsAtEnd = await helper.blogsInDb()
+    const savedBlog = blogsAtEnd.find(blog => blog.title === 'not a very liked blog')
+
+    expect(savedBlog.likes).toBeDefined()
+    expect(savedBlog.likes).toBe(0)
+  })
+  
 })
 
 afterAll(() => {
