@@ -1,0 +1,27 @@
+### GET request with a header
+GET http://localhost:3003/api/blogs
+Accept: application/json
+
+### Send POST request with json body
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "new stuff",
+  "author": "hugo",
+  "url": "",
+  "likes": 2
+}
+
+
+
+### Send too short URL title  => should give validationError
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "no",
+  "author": "me",
+  "url": "",
+  "likes": 1
+}
