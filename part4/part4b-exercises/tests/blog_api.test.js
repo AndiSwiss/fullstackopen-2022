@@ -12,7 +12,6 @@ beforeEach(async () => {
     const blogObject = new Blog(blog)
     await blogObject.save()
   }
-
   //Other variant (also works) => https://fullstackopen.com/en/part4/testing_the_backend#optimizing-the-before-each-function
   // const blogObjects = helper.initialBlogs.map(blog => new Blog(blog))
   // const promiseArray = blogObjects.map(blog => blog.save())
@@ -80,7 +79,7 @@ describe('new blog', () => {
     const newBlog = {
       title: 'async/await simplifies making async calls',
       author: 'who',
-      url: '',
+      url: 'google.com',
       likes: 5
     }
     await api
@@ -105,16 +104,28 @@ describe('new blog', () => {
       .send(newBlog)
       .expect(400)
     const blogsAtEnd = await helper.blogsInDb()
-
     expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
   })
 
+  test('blog without url is not added', async () => {
+    const newBlog = {
+      title: 'no URL provided',
+      author: 'always the same guy',
+      likes: 2
+    }
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(400)
+    const blogsAtEnd = await helper.blogsInDb()
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
+  })
 
   test('EXERCISE 4.11: If "likes" is missing, check if it defaults to 0', async () => {
     const newBlog = {
       title: 'not a very liked blog',
       author: 'ben',
-      url: '',
+      url: 'github.com'
     }
     await api
       .post('/api/blogs')
@@ -123,11 +134,9 @@ describe('new blog', () => {
       .expect('Content-Type', /application\/json/)
     const blogsAtEnd = await helper.blogsInDb()
     const savedBlog = blogsAtEnd.find(blog => blog.title === 'not a very liked blog')
-
     expect(savedBlog.likes).toBeDefined()
     expect(savedBlog.likes).toBe(0)
   })
-  
 })
 
 afterAll(() => {

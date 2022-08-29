@@ -28,6 +28,18 @@ content-type: application/json
 {
   "title": "smart stuff",
   "author": "hugo",
-  "url": "",
+  "url": "other-domain.com",
   "likes": 2
+}
+
+### POST a blog
+POST http://localhost:3003/api/blogs/
+content-type: application/json
+
+{
+  "title": "newish",
+  "author": "who",
+  "url": "github.com",
+  "likes": 5,
+  "id": "630ca495dc3196e7eebc06a5"
 }
