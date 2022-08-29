@@ -20,3 +20,14 @@ content-type: application/json
   "url": "me.com",
   "likes": 3
 }
+
+### POST a blog
+POST http://localhost:3003/api/blogs/
+content-type: application/json
+
+{
+  "title": "smart stuff",
+  "author": "hugo",
+  "url": "",
+  "likes": 2
+}
